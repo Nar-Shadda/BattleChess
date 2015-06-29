@@ -38,8 +38,28 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\Color.cs" />
+    <Compile Include="Enumerations\Figure.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="BattleChess.cs" />
+    <Compile Include="GameObjects\Board\Board.cs" />
+    <Compile Include="GameObjects\Figures\Bishop.cs" />
+    <Compile Include="GameObjects\Figures\King.cs" />
+    <Compile Include="GameObjects\Figures\Knight.cs" />
+    <Compile Include="GameObjects\Figures\Pawn.cs" />
+    <Compile Include="GameObjects\Figures\Queen.cs" />
+    <Compile Include="GameObjects\Figures\Rook.cs" />
+    <Compile Include="GameObjects\GameObject.cs" />
+    <Compile Include="GameObjects\Squares\Square.cs" />
+    <Compile Include="GlobalConstants.cs" />
+    <Compile Include="Initialize\InitializeBoard.cs" />
+    <Compile Include="Interfaces\IBoard.cs" />
+    <Compile Include="Interfaces\IDrawable.cs" />
+    <Compile Include="Interfaces\IFigure.cs" />
+    <Compile Include="Interfaces\IMoveable.cs" />
+    <Compile Include="Interfaces\IObject.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,11 +84,7 @@
   <ItemGroup>
     <Folder Include="Engine\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="GameObjects\Board\" />
-    <Folder Include="GameObjects\Figures\" />
     <Folder Include="GameObjects\Items\" />
-    <Folder Include="GameObjects\Squares\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="ScreenManager\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
