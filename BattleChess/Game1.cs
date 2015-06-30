@@ -1,7 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BattleChess.GameObjects.Board;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
+using Microsoft.Xna.Framework.Content;
+
 using BattleChess.Initialize;
+using BattleChess.Interfaces;
 
 namespace BattleChess
 {
@@ -11,7 +16,9 @@ namespace BattleChess
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;      
+        SpriteBatch spriteBatch;
+
+        public Board Board { get; set; }
 
         public Game1()
         {
@@ -31,9 +38,10 @@ namespace BattleChess
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
-            //initialize board
+            this.Board = new Board();
             this.IsMouseVisible = true;
+
+            ScreenManager.Instance.Engine = this;
 
             base.Initialize();
         }
@@ -48,7 +56,7 @@ namespace BattleChess
             
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-           
+           ScreenManager.Instance.LoadContent(Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -69,11 +77,12 @@ namespace BattleChess
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+        
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                // Exit();
 
             // TODO: Add your update logic here
-
+            //ScreenManager.Instance.CurrentScreen.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -86,9 +95,7 @@ namespace BattleChess
             GraphicsDevice.Clear(Color.WhiteSmoke);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            
-            spriteBatch.End();
+            ScreenManager.Instance.CurrentScreen.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }

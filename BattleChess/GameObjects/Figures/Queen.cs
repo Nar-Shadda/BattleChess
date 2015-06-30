@@ -10,7 +10,7 @@ namespace BattleChess.GameObjects.Figures
     class Queen : BaseFigure
     {
         public Queen(Color color)
-            : base(color)
+            : base(color, GlobalConstants.Queen + color)
         {
         }
 

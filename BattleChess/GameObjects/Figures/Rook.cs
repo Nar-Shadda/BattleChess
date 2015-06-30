@@ -10,7 +10,7 @@ namespace BattleChess.GameObjects.Figures
     class Rook : BaseFigure
     {
         public Rook(Color color)
-            : base(color)
+            : base(color, GlobalConstants.Rook + color)
         {
         }
 

@@ -7,7 +7,7 @@ using BattleChess.Enumerations;
 namespace BattleChess.Interfaces
 {
     
-    public interface IFigure : IObject
+    public interface IFigure : IObject, IDrawable
     {
         Color Color { get; set; }
 

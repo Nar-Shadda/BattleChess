@@ -10,7 +10,6 @@ namespace BattleChess.GameObjects
         private Position position;
         private int width;
         private int height;
-        private readonly string imagePath;
 
         public GameObject()
         {

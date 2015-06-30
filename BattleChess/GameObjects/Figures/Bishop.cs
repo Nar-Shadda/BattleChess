@@ -10,7 +10,7 @@ namespace BattleChess.GameObjects.Figures
     class Bishop : BaseFigure
     {
         public Bishop(Color color)
-            : base(color)
+            : base(color, GlobalConstants.Bishop + color)
         {
         }
 

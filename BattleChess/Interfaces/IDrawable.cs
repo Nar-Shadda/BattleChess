@@ -5,7 +5,8 @@ using System.Text;
 
 namespace BattleChess.Interfaces
 {
-    interface IDrawable
+    public interface IDrawable
     {
+        string ImagePath { get; set; }
     }
 }
