@@ -43,6 +43,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="BattleChess.cs" />
     <Compile Include="GameObjects\Board\Board.cs" />
+    <Compile Include="GameObjects\Figures\BaseFigure.cs" />
     <Compile Include="GameObjects\Figures\Bishop.cs" />
     <Compile Include="GameObjects\Figures\King.cs" />
     <Compile Include="GameObjects\Figures\Knight.cs" />

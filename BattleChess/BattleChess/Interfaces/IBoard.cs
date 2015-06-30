@@ -5,7 +5,8 @@ using System.Text;
 
 namespace BattleChess.Interfaces
 {
-    interface IBoard
+    public interface IBoard
     {
+        void AddFigure(IFigure figure, Position position);
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BattleChess.GameObjects.Figures
 {
-    class Rook
+    class Rook : BaseFigure
     {
     }
 }

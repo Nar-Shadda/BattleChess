@@ -8,19 +8,19 @@ using BattleChess.GameObjects.Figures;
 
 namespace BattleChess.GameObjects.Board
 {
-    class Board
+    class Board : IBoard
     {
         public Dictionary<Position, IObject> board = new Dictionary<Position, IObject>();
 
-        public Board()
+        public Board() 
         {
-
+                
         }
 
-        
 
-
-
-        
+        public void AddFigure(IFigure figure, Position position)
+        {
+            board[position] = figure;
+        }
     }
 }

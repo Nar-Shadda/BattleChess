@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BattleChess.Interfaces
 {
-    interface IFigure
+    public interface IFigure : IObject
     {
     }
 }
