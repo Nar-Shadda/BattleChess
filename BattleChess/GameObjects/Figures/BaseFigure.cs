@@ -16,6 +16,7 @@ namespace BattleChess.GameObjects.Figures
             this.LegalPositions=new List<Position>();
         }
 
+
         public Color Color { get; set; }
 
         public List<Position> LegalPositions { get; set; }

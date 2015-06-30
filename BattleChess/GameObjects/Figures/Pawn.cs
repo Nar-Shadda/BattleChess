@@ -8,6 +8,14 @@ namespace BattleChess.GameObjects.Figures
 {
     class Pawn : BaseFigure
     {
-      
+        public Pawn(Color color)
+            : base(color)
+        {
+        }
+
+        public override List<Position> CalcValidMoves()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
