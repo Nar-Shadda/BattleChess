@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BattleChess.GameObjects.Figures
+namespace BattleChess.Interfaces
 {
-    class Pawn : BaseFigure
+    public interface IPlayer
     {
-      
+        string Name { get; }
+
+        Color Color { get; }
+
+
     }
 }
