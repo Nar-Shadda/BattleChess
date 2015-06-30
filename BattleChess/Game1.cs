@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using BattleChess.Initialize;
 
 namespace BattleChess
 {
@@ -10,22 +11,15 @@ namespace BattleChess
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
-        Texture2D board;
-        Rectangle drawrect;
-        Texture2D king;
-        Rectangle kingrect;
-        
-        
+        SpriteBatch spriteBatch;      
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = GlobalConstants.WindowWidth;
+            graphics.PreferredBackBufferHeight = GlobalConstants.WindowHeight;
         }
 
         /// <summary>
@@ -37,7 +31,8 @@ namespace BattleChess
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            // create objects - board, squares, players, figures etc.
+            
+            //initialize board
             this.IsMouseVisible = true;
 
             base.Initialize();
@@ -53,12 +48,7 @@ namespace BattleChess
             
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            board = Content.Load<Texture2D>("sprites/boards/board0");
-            drawrect = new Rectangle(10, 10, board.Width, board.Height);
-
-            king = Content.Load<Texture2D>("sprites/figures/king");
-            kingrect = new Rectangle(55, 55, 64, 64);
-            
+           
 
             // TODO: use this.Content to load your game content here
         }
@@ -97,8 +87,7 @@ namespace BattleChess
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(board, drawrect, Color.White);
-            spriteBatch.Draw(king, kingrect, Color.White);
+            
             spriteBatch.End();
 
             base.Draw(gameTime);
