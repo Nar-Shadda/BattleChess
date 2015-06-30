@@ -1,12 +1,11 @@
-﻿using BattleChess.GameObjects.Figures;
-using BattleChess.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BattleChess.Initialize
+﻿namespace BattleChess.Initialize
 {
+    using System;
+    using System.Collections.Generic;
+
+    using global::BattleChess.GameObjects.Figures;
+    using global::BattleChess.Interfaces;
+
     public delegate void Initialize();
     public  class InitializeBoard
     {
@@ -14,19 +13,15 @@ namespace BattleChess.Initialize
 
         private readonly IList<Type> figureTypes = new List<Type>
             {
-                typeof(Rook),
-                typeof(Knight),
-                typeof(Bishop),
-                typeof(Queen),
-                typeof(King),
-                typeof(Bishop),
-                typeof(Knight),
+                typeof(Rook), 
+                typeof(Knight), 
+                typeof(Bishop), 
+                typeof(Queen), 
+                typeof(King), 
+                typeof(Bishop), 
+                typeof(Knight), 
                 typeof(Rook)
             };
-
-        
-             
-
 
         public void Initialize(IList<IPlayer> players, IBoard board)
         {
@@ -62,7 +57,5 @@ namespace BattleChess.Initialize
                 board.AddFigure(figureInstance, position);
             }
         }
-
-    
     }
 }
