@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using BattleChess.Screens;
+
+using BattleChess;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace BattleChess.Screens
+{
+    class MenuScreen : Screen
+    {
+        
+        public MenuScreen(Game engine) : base(engine)
+        {
+        }
+
+        public override void LoadContent()
+        {
+            //ScreenManager.Instance.Engine.Board
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+         
+        }
+    }
+}
