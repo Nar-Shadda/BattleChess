@@ -38,7 +38,6 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Engine\Engine.cs" />
     <Compile Include="Enumerations\Color.cs" />
     <Compile Include="Enumerations\Figure.cs" />
     <Compile Include="Game1.cs" />
@@ -84,6 +83,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Engine\" />
     <Folder Include="Exceptions\" />
     <Folder Include="GameObjects\Items\" />
     <Folder Include="ScreenManager\" />

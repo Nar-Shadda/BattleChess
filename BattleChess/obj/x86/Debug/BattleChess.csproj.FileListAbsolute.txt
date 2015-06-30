@@ -106,3 +106,6 @@ C:\Users\ivan\Desktop\TeamProjectLastVersion\BattleChess\BattleChess\bin\Windows
 C:\Users\ivan\Desktop\TeamProjectLastVersion\BattleChess\BattleChess\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\ivan\Desktop\TeamProjectLastVersion\BattleChess\BattleChess\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\ivan\Desktop\TeamProjectLastVersion\BattleChess\BattleChess\obj\x86\Debug\BattleChess.csprojResolveAssemblyReference.cache
+C:\Users\darighteous1\repos\Nar-Shadda\BattleChess\BattleChess\obj\x86\Debug\BattleChess.exe
+C:\Users\darighteous1\repos\Nar-Shadda\BattleChess\BattleChess\obj\x86\Debug\BattleChess.pdb
+C:\Users\darighteous1\repos\Nar-Shadda\BattleChess\BattleChess\obj\x86\Debug\BattleChess.csprojResolveAssemblyReference.cache

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BattleChess.Enumerations;
 
 namespace BattleChess.GameObjects.Figures
 {
-    using global::BattleChess.Enumerations;
 
     class Knight : BaseFigure
     {
