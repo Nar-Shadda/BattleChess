@@ -14,6 +14,9 @@ namespace BattleChess.Screens
         private Texture2D board;
         private Texture2D border;
         private Texture2D background;
+        private Texture2D letters;
+        private Texture2D numbers;
+
         private Texture2D clickedFigure;
         private Texture2D player1;
         private Texture2D player2;
@@ -30,7 +33,9 @@ namespace BattleChess.Screens
             board = content.Load<Texture2D>("Sprites/Boards/board0");
             border = content.Load<Texture2D>("Sprites/Borders/border0");
             background = content.Load<Texture2D>("Sprites/Backgrounds/background0");
-            
+            letters = content.Load<Texture2D>("Sprites/Borders/letters");
+            numbers = content.Load<Texture2D>("Sprites/Borders/numbers");
+
             player1 = content.Load<Texture2D>("Sprites/Players/pesho");
             player2 = content.Load<Texture2D>("Sprites/Players/gosho");
 
@@ -69,6 +74,10 @@ namespace BattleChess.Screens
 
             //draw border
             spriteBatch.Draw(border, new Rectangle(0, 0, border.Width, border.Height), Microsoft.Xna.Framework.Color.White);
+            spriteBatch.Draw(letters, new Rectangle(30, 0, letters.Width, letters.Height), Microsoft.Xna.Framework.Color.White);
+            spriteBatch.Draw(letters, new Rectangle(30, 670, letters.Width, letters.Height), Microsoft.Xna.Framework.Color.White);
+            spriteBatch.Draw(numbers, new Rectangle(0, 30, numbers.Width, numbers.Height), Microsoft.Xna.Framework.Color.White);
+            spriteBatch.Draw(numbers, new Rectangle(670, 30, numbers.Width, numbers.Height), Microsoft.Xna.Framework.Color.White);
 
             //draw board
             spriteBatch.Draw(board, new Rectangle(GlobalConstants.BoardTopLeftX, GlobalConstants.BoardTopLeftY, board.Width, board.Height), Microsoft.Xna.Framework.Color.White);
