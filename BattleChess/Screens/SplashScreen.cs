@@ -28,7 +28,7 @@ namespace BattleChess.Screens
             {
                 screenCount++;
                 background = content.Load<Texture2D>("Sprites/Backgrounds/SplashScreen0" + screenCount);
-                Thread.Sleep(1000);
+                Thread.Sleep(300);
             }
 
         }
