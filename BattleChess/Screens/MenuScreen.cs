@@ -14,24 +14,29 @@ namespace BattleChess.Screens
 {
     class MenuScreen : Screen
     {
-        
-        public MenuScreen() : base()
-        {
-        }
+
+        private Texture2D background;
 
         public override void LoadContent()
         {
-            //ScreenManager.Instance.Engine.Board
+            base.LoadContent();
+
+            background = content.Load<Texture2D>("Sprites/Backgrounds/background0");
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-         
+
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
+
+            spriteBatch.End();
         }
     }
 }

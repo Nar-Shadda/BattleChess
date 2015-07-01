@@ -114,7 +114,7 @@ namespace BattleChess
                     
                     clickedFigure = Content.Load<Texture2D>(engine.Board.Squares[squareClicked].ImagePath);
                     
-                    clickedFigureRectangle = new Rectangle(300, 300, 80, 80);
+                    clickedFigureRectangle = new Rectangle(mouse.X, mouse.Y, 80, 80);
                     //engine.Board.Squares[squareClicked] = null;
                 }
                 
@@ -132,20 +132,17 @@ namespace BattleChess
         {
             GraphicsDevice.Clear(Color.WhiteSmoke);
 
-            // TODO: Add your drawing code here
-
+            // Draw current screen and clicked figure (if available)
+            ScreenManager.Instance.CurrentScreen.Draw(spriteBatch);
+            
             if (clickedFigure != null)
             {
-                spriteBatch.Begin(); 
+                spriteBatch.Begin();
                 spriteBatch.Draw(clickedFigure, clickedFigureRectangle, Microsoft.Xna.Framework.Color.White);
                 spriteBatch.End();
             }
-            
-            ScreenManager.Instance.CurrentScreen.Draw(spriteBatch);
-            
+
             base.Draw(gameTime);
         }
-        
-        
     }
 }

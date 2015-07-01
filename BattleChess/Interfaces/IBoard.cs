@@ -8,7 +8,5 @@ namespace BattleChess.Interfaces
     public interface IBoard
     {
         Dictionary<Position, IFigure> Squares { get; set; }
-
-        
     }
 }
