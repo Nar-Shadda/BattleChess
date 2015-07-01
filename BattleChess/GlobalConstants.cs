@@ -17,7 +17,7 @@ namespace BattleChess
         public const int BorderTopLeftY = 0;
 
         public const string Pawn =   "/Sprites/Figures/Pawn";
-        public const string King = "/Sprites/Figures/King";
+        public const string King = "Sprites/Figures/King";
         public const string Queen = "/Sprites/Figures/Queen";
         public const string Bishop = "/Sprites/Figures/Bishop";
         public const string Knight = "/Sprites/Figures/Knight";

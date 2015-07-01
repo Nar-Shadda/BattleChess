@@ -8,9 +8,9 @@ using BattleChess.GameObjects.Figures;
 
 namespace BattleChess.GameObjects.Board
 {
-    class Board : IBoard
+    public class Board : IBoard
     {
-        public Dictionary<Position, IObject> board = new Dictionary<Position, IObject>();
+        public Dictionary<Position, IFigure> board = new Dictionary<Position, IFigure>();
 
         public Board() 
         {

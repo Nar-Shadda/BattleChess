@@ -1,6 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BattleChess.GameObjects.Board;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
+using Microsoft.Xna.Framework.Content;
+
+using BattleChess.Initialize;
+using BattleChess.Interfaces;
 
 namespace BattleChess
 {
@@ -12,20 +18,15 @@ namespace BattleChess
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D board;
-        Rectangle drawrect;
-        Texture2D king;
-        Rectangle kingrect;
-        
-        
+        public Board Board { get; set; }
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = GlobalConstants.WindowWidth;
+            graphics.PreferredBackBufferHeight = GlobalConstants.WindowHeight;
         }
 
         /// <summary>
@@ -37,8 +38,10 @@ namespace BattleChess
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            // create objects - board, squares, players, figures etc.
+            this.Board = new Board();
             this.IsMouseVisible = true;
+
+            ScreenManager.Instance.Engine = this;
 
             base.Initialize();
         }
@@ -53,12 +56,7 @@ namespace BattleChess
             
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            board = Content.Load<Texture2D>("sprites/boards/board0");
-            drawrect = new Rectangle(10, 10, board.Width, board.Height);
-
-            king = Content.Load<Texture2D>("sprites/figures/king");
-            kingrect = new Rectangle(55, 55, 64, 64);
-            
+           ScreenManager.Instance.LoadContent(Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -79,11 +77,12 @@ namespace BattleChess
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+        
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                // Exit();
 
             // TODO: Add your update logic here
-
+            //ScreenManager.Instance.CurrentScreen.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -96,10 +95,7 @@ namespace BattleChess
             GraphicsDevice.Clear(Color.WhiteSmoke);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            spriteBatch.Draw(board, drawrect, Color.White);
-            spriteBatch.Draw(king, kingrect, Color.White);
-            spriteBatch.End();
+            ScreenManager.Instance.CurrentScreen.Draw(spriteBatch);
 
             base.Draw(gameTime);
         }

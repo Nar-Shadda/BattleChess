@@ -6,13 +6,14 @@ using BattleChess.Enumerations;
 
 namespace BattleChess.Interfaces
 {
-    
-    public interface IFigure : IObject
+    using global::BattleChess.GameObjects.Board;
+
+    public interface IFigure : IObject, IDrawable
     {
         Color Color { get; set; }
 
         List<Position> LegalPositions { get; set; }
 
-        List<Position> CalcValidMoves();
+        List<Position> CalcValidMoves(Position currentPosition, Board board);
     }
 }

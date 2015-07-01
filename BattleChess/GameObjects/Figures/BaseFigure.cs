@@ -7,13 +7,15 @@ using BattleChess.Enumerations;
 
 namespace BattleChess.GameObjects.Figures
 {
+    using global::BattleChess.GameObjects.Board;
 
-    abstract class  BaseFigure : IFigure
+    abstract class BaseFigure : IFigure
     {
-        protected BaseFigure(Color color)
+        protected BaseFigure(Color color, string imagePath)
         {
             this.Color = color;
-            this.LegalPositions=new List<Position>();
+            this.LegalPositions = new List<Position>();
+            this.ImagePath = imagePath;
         }
 
 
@@ -21,7 +23,9 @@ namespace BattleChess.GameObjects.Figures
 
         public List<Position> LegalPositions { get; set; }
 
-        public abstract List<Position> CalcValidMoves();
+        public string ImagePath { get; set; }
+
+        public abstract List<Position> CalcValidMoves(Position currentPosition,Board board);
 
     }
 }
