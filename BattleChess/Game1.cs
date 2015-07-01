@@ -9,6 +9,7 @@ using BattleChess.Initialize;
 using BattleChess.Engine;
 using BattleChess.Interfaces;
 using System.Collections.Generic;
+using System;
 
 namespace BattleChess
 {
@@ -30,7 +31,7 @@ namespace BattleChess
             graphics.PreferredBackBufferHeight = GlobalConstants.WindowHeight;
         }
 
-     
+
 
 
         /// <summary>
@@ -43,8 +44,8 @@ namespace BattleChess
         {
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
-            
-            
+
+
             base.Initialize();
         }
 
@@ -85,6 +86,19 @@ namespace BattleChess
             // Exit();
 
             // TODO: Add your update logic here
+
+            MouseState mouse = Mouse.GetState();
+            if (mouse.LeftButton == ButtonState.Pressed)
+            {
+                int x = mouse.X - GlobalConstants.BoardTopLeftX;
+                int y = mouse.Y - GlobalConstants.BoardTopLeftY;
+                Position squareClicked = GetCLickedSquare(x, y);
+                engine.Board.Squares[squareClicked] = null;
+
+            }
+
+
+
             ScreenManager.Instance.CurrentScreen.Update(gameTime);
             base.Update(gameTime);
         }
@@ -101,6 +115,13 @@ namespace BattleChess
             ScreenManager.Instance.CurrentScreen.Draw(spriteBatch);
 
             base.Draw(gameTime);
+        }
+        private Position GetCLickedSquare(int x, int y)
+        {
+            int col = (int)Math.Ceiling( x / 80.0);
+            int row = (int)Math.Ceiling(y / 80.0);
+            return new Position((char)(col + 'a' - 1), (char)('9' - row));
+
         }
     }
 }
