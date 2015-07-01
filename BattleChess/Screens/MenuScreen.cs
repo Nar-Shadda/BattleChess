@@ -24,6 +24,11 @@ namespace BattleChess.Screens
             //ScreenManager.Instance.Engine.Board
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
          

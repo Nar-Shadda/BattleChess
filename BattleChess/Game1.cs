@@ -53,10 +53,10 @@ namespace BattleChess
         protected override void LoadContent()
         {
             //TODO: Load content here - text, sprites, audio etc. 
-            
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-           ScreenManager.Instance.LoadContent(Content);
+            ScreenManager.Instance.LoadContent(Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -77,12 +77,12 @@ namespace BattleChess
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-        
+
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-               // Exit();
+            // Exit();
 
             // TODO: Add your update logic here
-            //ScreenManager.Instance.CurrentScreen.Update(gameTime);
+            ScreenManager.Instance.CurrentScreen.Update(gameTime);
             base.Update(gameTime);
         }
 
