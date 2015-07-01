@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using BattleChess.Enumerations;
 
 namespace BattleChess.GameObjects.Figures
@@ -55,6 +56,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -85,6 +87,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -115,6 +118,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -145,6 +149,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -175,6 +180,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -205,6 +211,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -235,6 +242,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -265,6 +273,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using BattleChess.Enumerations;
 
 namespace BattleChess.GameObjects.Figures
 {
     using global::BattleChess.GameObjects.Board;
 
-    class Bishop : BaseFigure
+    public class Bishop : BaseFigure
     {
         public Bishop(Color color)
             : base(color, GlobalConstants.Bishop + color)
@@ -18,7 +19,7 @@ namespace BattleChess.GameObjects.Figures
         public override List<Position> CalcValidMoves(Position currentPosition, Board board)
         {
             List<Position> valid = new List<Position>();
-            this.RightUpDiagonalCheck(currentPosition,board,valid);
+            this.RightUpDiagonalCheck(currentPosition, board, valid);
             this.LeftUpDiagonalCheck(currentPosition, board, valid);
             this.LeftDownDiagonalCheck(currentPosition, board, valid);
             this.RightDownDiagonalCheck(currentPosition, board, valid);
@@ -51,6 +52,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -81,6 +83,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -111,6 +114,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }
@@ -141,6 +145,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     break;
                 }
+
                 currentPosition = frontPosition;
             }
         }

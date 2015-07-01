@@ -17,7 +17,6 @@ namespace BattleChess.GameObjects.Figures
 
         public override List<Position> CalcValidMoves(Position currentPosition, Board board)
         {
-            List<Position> valid = new List<Position>();
             List<Position> checkValid = new List<Position>()
             {
                 new Position(currentPosition.Col++,currentPosition.Row--),
@@ -29,14 +28,7 @@ namespace BattleChess.GameObjects.Figures
                 new Position(currentPosition.Col--,currentPosition.Row--),
                 new Position(currentPosition.Col,currentPosition.Row--),
             };
-            foreach (var position in checkValid)
-            {
-                if (this.ValidMovesCheck(position, board))
-                {
-                    valid.Add(position);
-                }
-            }    
-            return valid;
+            return checkValid.Where(position => this.ValidMovesCheck(position, board)).ToList();
         }
 
         private bool ValidMovesCheck(Position frontPosition,Board board)
