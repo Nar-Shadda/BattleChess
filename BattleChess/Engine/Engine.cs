@@ -17,6 +17,7 @@ namespace BattleChess.Engine
     {
         private Board board;
         private List<IPlayer> players;
+        ButtonState previousButtonState = ButtonState.Released;
 
         public IFigure ClickedFigure { get; set; }
         public Rectangle ClickedFigureRectangle { get; private set; }
@@ -24,7 +25,7 @@ namespace BattleChess.Engine
 
         public Engine()
         {
-
+            
             this.Board = new Board();
             this.players = new List<IPlayer> 
             {
@@ -72,7 +73,7 @@ namespace BattleChess.Engine
                     Thread.Sleep(300);
                     ScreenManager.Instance.ChangeScreens("GameScreen");
                 }
-                
+
                 else
                 {
                     Thread.Sleep(300);
@@ -88,15 +89,25 @@ namespace BattleChess.Engine
                 int y = mouse.Y - GlobalConstants.BoardTopLeftY;
 
                 Position squareClicked = GetCLickedSquare(x, y);
-
-                if (Board.Squares.ContainsKey(squareClicked) && Board.Squares[squareClicked] != null)
+                
+                if (this.Board.Squares[squareClicked] != null)
                 {
-
                     ClickedFigure = Board.Squares[squareClicked];
-                    ClickedFigureRectangle = new Rectangle(mouse.X, mouse.Y, 80, 80);
-                    Board.Squares[squareClicked] = null;
+
                 }
+                if (ClickedFigure != null)
+                {
+                    this.Board.Squares[squareClicked] = ClickedFigure;
+                }
+                
+               
+                previousButtonState = mouse.LeftButton;
             }
+            
+            ClickedFigureRectangle = new Rectangle(mouse.X - 40, mouse.Y - 40, 80, 80);
+
+
+            //this.Board.Squares[squareClicked] = null;
         }
     }
 }
