@@ -13,7 +13,7 @@ namespace BattleChess.Screens
     class GameScreen : Screen
     {
 
-        public GameScreen(Game engine) : base(engine)
+        public GameScreen(Engine.Engine engine) : base(engine)
         {
         }
 

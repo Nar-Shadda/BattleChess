@@ -21,7 +21,7 @@ namespace BattleChess.Screens
 
         private List<Texture2D> drawables;
 
-        public SplashScreen(Game engine)
+        public SplashScreen(Engine.Engine engine)
             : base(engine)
         {
 

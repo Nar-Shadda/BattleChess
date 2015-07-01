@@ -25,7 +25,6 @@ namespace BattleChess
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            engine = new Engine.Engine();
 
             graphics.PreferredBackBufferWidth = GlobalConstants.WindowWidth;
             graphics.PreferredBackBufferHeight = GlobalConstants.WindowHeight;
@@ -44,8 +43,9 @@ namespace BattleChess
         {
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
+            engine = new Engine.Engine();
 
-            ScreenManager.Instance.Engine = this;
+            ScreenManager.Instance.Engine = engine;
             
             base.Initialize();
         }

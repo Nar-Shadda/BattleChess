@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 
 using BattleChess.Screens;
+using BattleChess.Engine;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -18,7 +19,7 @@ namespace BattleChess
         private static ScreenManager instance;
         public ContentManager Content { private set; get; }
 
-        public Game1 Engine { get; set; }
+        public Engine.Engine Engine { get; set; }
 
         private Screen currentScreen;
 
@@ -43,7 +44,7 @@ namespace BattleChess
 
         private ScreenManager()
         {
-            CurrentScreen = new SplashScreen(this.Engine);
+            CurrentScreen = new SplashScreen(Engine);
             
         }
 
@@ -52,10 +53,10 @@ namespace BattleChess
             switch (screenName)
             {
                 case "GameScreen":
-                    CurrentScreen = new GameScreen(this.Engine);
+                    CurrentScreen = new GameScreen(Engine);
                     break;
                 case "MenuScreen":
-                    CurrentScreen = new MenuScreen(this.Engine);
+                    CurrentScreen = new MenuScreen(Engine);
                     break;
                 default:
                     CurrentScreen = new SplashScreen(this.Engine);

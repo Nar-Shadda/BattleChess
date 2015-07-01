@@ -15,13 +15,13 @@ namespace BattleChess.Screens
     {
         private IList<IDrawable> drawables;
 
-        protected Game Engine { get; set; }
+        protected Engine.Engine Engine { get; set; }
 
         protected ContentManager content;
 
         public Type Type;
 
-        public Screen(Game engine)
+        public Screen(Engine.Engine engine)
         {
             this.Engine = engine;
             Type = this.GetType();
