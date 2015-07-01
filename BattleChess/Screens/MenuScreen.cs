@@ -15,7 +15,7 @@ namespace BattleChess.Screens
     class MenuScreen : Screen
     {
         
-        public MenuScreen(Engine.Engine engine) : base(engine)
+        public MenuScreen() : base()
         {
         }
 

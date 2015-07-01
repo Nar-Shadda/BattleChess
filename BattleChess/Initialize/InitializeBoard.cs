@@ -27,21 +27,33 @@ namespace BattleChess.Initialize
 
         public static void Initialize(Board board)
         {
-            
-            
             AddArmyToBoardRow(Color.Black, board,  '8');
             AddPawnsToBoardRow(Color.Black, board, '7');
 
             AddPawnsToBoardRow(Color.White, board, '2');
             AddArmyToBoardRow(Color.White, board, '1');
-        }  
+
+            AddEmptyPositions(board);
+        }
+
+        private static void AddEmptyPositions(Board board)
+        {
+            for (char i = '3'; i <= '6'; i++)
+            {
+                for (char j = 'a'; j <= 'h'; j++)
+                {
+                    Position position = new Position(j, i);
+                    board.Squares[position] = null;
+                }
+            }
+        }
 
         private static void AddPawnsToBoardRow(Color color, Board board, char chessRow)
         {
             for (int i = 0; i < BoardTotalRowsAndCols; i++)
             {
                 var pawn = new Pawn(color);
-                var position = new Position(chessRow, (char)(i + 'a'));
+                var position = new Position((char)(i + 'a'), chessRow);
                 
                 board.AddFigure(pawn, position);
             }
@@ -53,7 +65,7 @@ namespace BattleChess.Initialize
             {
                 var figureType = figureTypes[i];
                 var figureInstance = (IFigure)Activator.CreateInstance(figureType, color);
-                var position = new Position(chessRow, (char)(i + 'a'));
+                var position = new Position((char)(i + 'a'), chessRow);
                 board.AddFigure(figureInstance, position);
             }
         }

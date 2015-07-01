@@ -43,9 +43,7 @@ namespace BattleChess
         {
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
-            engine = new Engine.Engine();
-
-            ScreenManager.Instance.Engine = engine;
+            
             
             base.Initialize();
         }
@@ -57,7 +55,8 @@ namespace BattleChess
         protected override void LoadContent()
         {
             //TODO: Load content here - text, sprites, audio etc. 
-
+            engine = new Engine.Engine();
+            ScreenManager.Instance.Engine = engine;
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ScreenManager.Instance.LoadContent(Content);

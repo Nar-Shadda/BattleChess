@@ -35,6 +35,10 @@ namespace BattleChess.Engine
             }
         }
 
-        public Board Board { get; set; }
+        public Board Board
+        {
+            get { return this.board; }
+            set { this.board = value; }
+        }
     }
 }
