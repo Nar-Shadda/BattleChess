@@ -11,14 +11,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BattleChess.Screens
 {
-    abstract class Screen
+    public abstract class Screen
     {
-        private IList<IDrawable> drawables; 
+        private IList<IDrawable> drawables;
 
         protected Game Engine { get; set; }
 
         protected ContentManager content;
-        
+
         public Type Type;
 
         public Screen(Game engine)
@@ -40,13 +40,9 @@ namespace BattleChess.Screens
 
         public virtual void Update(GameTime gameTime)
         {
-            //TODO: read updated board list
-            
+            //TODO: read updated list with drawables
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
-        {
-            //TODO: Draw game screen
-        }
+        public abstract void Draw(SpriteBatch spriteBatch);
     }
 }
