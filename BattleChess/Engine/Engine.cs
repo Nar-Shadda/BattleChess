@@ -94,7 +94,7 @@ namespace BattleChess.Engine
 
                     ClickedFigure = Board.Squares[squareClicked];
                     ClickedFigureRectangle = new Rectangle(mouse.X, mouse.Y, 80, 80);
-                    //engine.Board.Squares[squareClicked] = null;
+                    Board.Squares[squareClicked] = null;
                 }
             }
         }

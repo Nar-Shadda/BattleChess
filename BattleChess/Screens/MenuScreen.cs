@@ -6,7 +6,7 @@ using System.Threading;
 using BattleChess.Screens;
 
 using BattleChess;
-
+using BattleChess.GameObjects.Board;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -45,6 +45,10 @@ namespace BattleChess.Screens
                 if (mouse.X > newGameRectangle.X && (mouse.X < newGameRectangle.X + newGameRectangle.Width) && mouse.Y > newGameRectangle.Y && (mouse.Y < newGameRectangle.Y + newGameRectangle.Height))
                 {
                     newGame = newGameClicked;
+
+                    ScreenManager.Instance.Engine = new Engine.Engine();
+                    
+                    ScreenManager.Instance.ChangeScreens("GameScreen");
                 }
             }
         }
