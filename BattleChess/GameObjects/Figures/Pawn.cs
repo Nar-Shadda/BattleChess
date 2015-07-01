@@ -26,19 +26,19 @@ namespace BattleChess.GameObjects.Figures
                 Position leftDiagonalPosition = new Position(currentPosition.Col--, currentPosition.Row ++);
                 Position rightDiagonalPosition = new Position(currentPosition.Col++, currentPosition.Row++);
 
-                if (board.board.ContainsKey(frontPosition) && board.board[frontPosition] == null)
+                if (board.Squares.ContainsKey(frontPosition) && board.Squares[frontPosition] == null)
                 {
                     valid.Add(frontPosition);
                 }
-                if (board.board.ContainsKey(leftDiagonalPosition)
-                    && board.board[leftDiagonalPosition] != null
-                    && board.board[leftDiagonalPosition].Color == Color.Black)
+                if (board.Squares.ContainsKey(leftDiagonalPosition)
+                    && board.Squares[leftDiagonalPosition] != null
+                    && board.Squares[leftDiagonalPosition].Color == Color.Black)
                 {
                     valid.Add(leftDiagonalPosition);
                 }
-                if (board.board.ContainsKey(rightDiagonalPosition)
-                    && board.board[rightDiagonalPosition] != null
-                    && board.board[rightDiagonalPosition].Color == Color.Black)
+                if (board.Squares.ContainsKey(rightDiagonalPosition)
+                    && board.Squares[rightDiagonalPosition] != null
+                    && board.Squares[rightDiagonalPosition].Color == Color.Black)
                 {
                     valid.Add(rightDiagonalPosition);
                 }
@@ -50,19 +50,19 @@ namespace BattleChess.GameObjects.Figures
                 Position leftDiagonalPosition = new Position(currentPosition.Col--, currentPosition.Row--);
                 Position rightDiagonalPosition = new Position(currentPosition.Col++, currentPosition.Row--);
 
-                if (board.board.ContainsKey(frontPosition) && board.board[frontPosition] == null)
+                if (board.Squares.ContainsKey(frontPosition) && board.Squares[frontPosition] == null)
                 {
                     valid.Add(frontPosition);
                 }
-                if (board.board.ContainsKey(leftDiagonalPosition)
-                    && board.board[leftDiagonalPosition] != null
-                    && board.board[leftDiagonalPosition].Color == Color.White)
+                if (board.Squares.ContainsKey(leftDiagonalPosition)
+                    && board.Squares[leftDiagonalPosition] != null
+                    && board.Squares[leftDiagonalPosition].Color == Color.White)
                 {
                     valid.Add(leftDiagonalPosition);
                 }
-                if (board.board.ContainsKey(rightDiagonalPosition)
-                    && board.board[rightDiagonalPosition] != null
-                    && board.board[rightDiagonalPosition].Color == Color.White)
+                if (board.Squares.ContainsKey(rightDiagonalPosition)
+                    && board.Squares[rightDiagonalPosition] != null
+                    && board.Squares[rightDiagonalPosition].Color == Color.White)
                 {
                     valid.Add(rightDiagonalPosition);
                 }

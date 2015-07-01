@@ -31,17 +31,17 @@ namespace BattleChess.GameObjects.Figures
             {
                 Position frontPosition = new Position(currentPosition.Col++, currentPosition.Row++);
 
-                if (board.board.ContainsKey(frontPosition))
+                if (board.Squares.ContainsKey(frontPosition))
                 {
-                    if (board.board[frontPosition] == null)
+                    if (board.Squares[frontPosition] == null)
                     {
                         valid.Add(frontPosition);
                     }
-                    else if (board.board[frontPosition].Color == this.Color)
+                    else if (board.Squares[frontPosition].Color == this.Color)
                     {
                         break;
                     }
-                    else if (board.board[frontPosition].Color != this.Color)
+                    else if (board.Squares[frontPosition].Color != this.Color)
                     {
                         valid.Add(frontPosition);
                         break;
@@ -61,17 +61,17 @@ namespace BattleChess.GameObjects.Figures
             {
                 Position frontPosition = new Position(currentPosition.Col--, currentPosition.Row++);
 
-                if (board.board.ContainsKey(frontPosition))
+                if (board.Squares.ContainsKey(frontPosition))
                 {
-                    if (board.board[frontPosition] == null)
+                    if (board.Squares[frontPosition] == null)
                     {
                         valid.Add(frontPosition);
                     }
-                    else if (board.board[frontPosition].Color == this.Color)
+                    else if (board.Squares[frontPosition].Color == this.Color)
                     {
                         break;
                     }
-                    else if (board.board[frontPosition].Color != this.Color)
+                    else if (board.Squares[frontPosition].Color != this.Color)
                     {
                         valid.Add(frontPosition);
                         break;
@@ -91,17 +91,17 @@ namespace BattleChess.GameObjects.Figures
             {
                 Position frontPosition = new Position(currentPosition.Col--, currentPosition.Row--);
 
-                if (board.board.ContainsKey(frontPosition))
+                if (board.Squares.ContainsKey(frontPosition))
                 {
-                    if (board.board[frontPosition] == null)
+                    if (board.Squares[frontPosition] == null)
                     {
                         valid.Add(frontPosition);
                     }
-                    else if (board.board[frontPosition].Color == this.Color)
+                    else if (board.Squares[frontPosition].Color == this.Color)
                     {
                         break;
                     }
-                    else if (board.board[frontPosition].Color != this.Color)
+                    else if (board.Squares[frontPosition].Color != this.Color)
                     {
                         valid.Add(frontPosition);
                         break;
@@ -121,17 +121,17 @@ namespace BattleChess.GameObjects.Figures
             {
                 Position frontPosition = new Position(currentPosition.Col++, currentPosition.Row--);
 
-                if (board.board.ContainsKey(frontPosition))
+                if (board.Squares.ContainsKey(frontPosition))
                 {
-                    if (board.board[frontPosition] == null)
+                    if (board.Squares[frontPosition] == null)
                     {
                         valid.Add(frontPosition);
                     }
-                    else if (board.board[frontPosition].Color == this.Color)
+                    else if (board.Squares[frontPosition].Color == this.Color)
                     {
                         break;
                     }
-                    else if (board.board[frontPosition].Color != this.Color)
+                    else if (board.Squares[frontPosition].Color != this.Color)
                     {
                         valid.Add(frontPosition);
                         break;
