@@ -8,19 +8,15 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace BattleChess.Screens
-
 {
     class GameScreen : Screen
     {
         private Texture2D board;
         private Texture2D border;
         private Texture2D background;
+        private Texture2D clickedFigure;
 
         private Dictionary<IFigure, Texture2D> textures;
-
-        public GameScreen() : base()
-        {
-        }
 
         public override void LoadContent()
         {
@@ -52,11 +48,14 @@ namespace BattleChess.Screens
         public override void Update(GameTime gameTime)
         {
             //TODO: get list from engine
-           
+            if (ScreenManager.Instance.Engine.ClickedFigure != null)
+            {
+                clickedFigure = content.Load<Texture2D>(ScreenManager.Instance.Engine.ClickedFigure.ImagePath);
+            }
 
         }
 
-        
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
@@ -83,6 +82,12 @@ namespace BattleChess.Screens
 
                     spriteBatch.Draw(textures[currentFigure], new Rectangle(y, x, textures[currentFigure].Width, textures[currentFigure].Width), Microsoft.Xna.Framework.Color.White);
                 }
+            }
+
+            //draw clicked figure
+            if (clickedFigure != null)
+            {
+                spriteBatch.Draw(clickedFigure, ScreenManager.Instance.Engine.ClickedFigureRectangle, Microsoft.Xna.Framework.Color.White);
             }
 
             spriteBatch.End();
