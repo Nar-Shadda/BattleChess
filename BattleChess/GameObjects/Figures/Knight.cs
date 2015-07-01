@@ -8,7 +8,7 @@ namespace BattleChess.GameObjects.Figures
 {
     using global::BattleChess.GameObjects.Board;
 
-    class Knight : BaseFigure
+    public class Knight : BaseFigure
     {
         public Knight(Color color)
             : base(color, GlobalConstants.Knight + color)

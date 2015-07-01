@@ -9,7 +9,7 @@ namespace BattleChess.GameObjects.Figures
     using global::BattleChess.GameObjects.Board;
     using global::BattleChess.Interfaces;
 
-    class Pawn : BaseFigure
+    public class Pawn : BaseFigure
     {
         public Pawn(Color color)
             : base(color, GlobalConstants.Pawn + color)
@@ -56,13 +56,13 @@ namespace BattleChess.GameObjects.Figures
                 }
                 if (board.board.ContainsKey(leftDiagonalPosition)
                     && board.board[leftDiagonalPosition] != null
-                    && board.board[leftDiagonalPosition].Color == Color.Black)
+                    && board.board[leftDiagonalPosition].Color == Color.White)
                 {
                     valid.Add(leftDiagonalPosition);
                 }
                 if (board.board.ContainsKey(rightDiagonalPosition)
                     && board.board[rightDiagonalPosition] != null
-                    && board.board[rightDiagonalPosition].Color == Color.Black)
+                    && board.board[rightDiagonalPosition].Color == Color.White)
                 {
                     valid.Add(rightDiagonalPosition);
                 }
