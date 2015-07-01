@@ -9,7 +9,7 @@ namespace BattleChess.GameObjects.Figures
 {
     using global::BattleChess.GameObjects.Board;
 
-    abstract class BaseFigure : IFigure
+    public abstract class BaseFigure : IFigure
     {
         protected BaseFigure(Color color, string imagePath)
         {

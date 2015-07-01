@@ -7,6 +7,8 @@ namespace BattleChess.Interfaces
 {
     public interface IBoard
     {
-        void AddFigure(IFigure figure, Position position);
+        Dictionary<Position, IFigure> Squares { get; set; }
+
+        
     }
 }
