@@ -7,6 +7,7 @@ using BattleChess.Enumerations;
 
 namespace BattleChess.GameObjects.Figures
 {
+    using global::BattleChess.GameObjects.Board;
 
     abstract class BaseFigure : IFigure
     {
@@ -24,7 +25,7 @@ namespace BattleChess.GameObjects.Figures
 
         public string ImagePath { get; set; }
 
-        public abstract List<Position> CalcValidMoves();
+        public abstract List<Position> CalcValidMoves(Position currentPosition,Board board);
 
     }
 }

@@ -6,6 +6,7 @@ using BattleChess.Enumerations;
 
 namespace BattleChess.GameObjects.Figures
 {
+    using global::BattleChess.GameObjects.Board;
 
     class Queen : BaseFigure
     {
@@ -14,7 +15,7 @@ namespace BattleChess.GameObjects.Figures
         {
         }
 
-        public override List<Position> CalcValidMoves()
+        public override List<Position> CalcValidMoves(Position currentPosition, Board board)
         {
             throw new NotImplementedException();
         }

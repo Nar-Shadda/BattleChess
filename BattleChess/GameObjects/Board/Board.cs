@@ -10,7 +10,7 @@ namespace BattleChess.GameObjects.Board
 {
     public class Board : IBoard
     {
-        public Dictionary<Position, IObject> board = new Dictionary<Position, IObject>();
+        public Dictionary<Position, IFigure> board = new Dictionary<Position, IFigure>();
 
         public Board() 
         {
