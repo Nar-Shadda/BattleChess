@@ -63,6 +63,8 @@ namespace BattleChess
                     CurrentScreen = new SplashScreen();
                     break;
             }
+
+            CurrentScreen.LoadContent();
         }
         
         public void LoadContent(ContentManager Content)

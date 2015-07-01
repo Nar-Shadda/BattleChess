@@ -40,5 +40,13 @@ namespace BattleChess.Engine
             get { return this.board; }
             set { this.board = value; }
         }
+
+        public Position GetCLickedSquare(int x, int y)
+        {
+            int col = (int)Math.Ceiling(x / 80.0);
+            int row = (int)Math.Ceiling(y / 80.0);
+            return new Position((char)(col + 'a' - 1), (char)('9' - row));
+
+        }
     }
 }
