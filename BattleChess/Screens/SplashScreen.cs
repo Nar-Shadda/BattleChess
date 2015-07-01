@@ -13,13 +13,11 @@ namespace BattleChess.Screens
     class SplashScreen : Screen
     {
         private Texture2D draw;
-        private int index = 0;
         private Texture2D whiteKing;
         private Texture2D blackKing;
 
-        private Rectangle drawRectangle;
-        private Rectangle drawRectangle1;
         private Texture2D board;
+        private Texture2D border;
 
         private List<Texture2D> drawables;
 
@@ -36,9 +34,7 @@ namespace BattleChess.Screens
             whiteKing = content.Load<Texture2D>("Sprites/Figures/KingWhite");
             blackKing = content.Load<Texture2D>("Sprites/Figures/KingWhite");
             board = content.Load<Texture2D>("Sprites/Boards/board0");
-
-            drawRectangle = new Rectangle(100, 100, whiteKing.Width, whiteKing.Height);
-            drawRectangle1 = new Rectangle(200, 200, blackKing.Width, blackKing.Height);
+            border = content.Load<Texture2D>("Sprites/Borders/border0");
 
             drawables = new List<Texture2D> { whiteKing, blackKing };
 
@@ -55,22 +51,17 @@ namespace BattleChess.Screens
             int colIndex = 50;
 
             spriteBatch.Begin();
-
-            spriteBatch.Draw(board, new Rectangle(0, 0, board.Width, board.Height), Color.White);
+            
+            spriteBatch.Draw(border, new Rectangle(0,0, border.Width,border.Height), Color.White);
+            spriteBatch.Draw(board, new Rectangle(GlobalConstants.BoardTopLeftX, GlobalConstants.BoardTopLeftY, board.Width, board.Height), Color.White);
 
             for (int i = 0; i < 8; i++)
             {
-                spriteBatch.Draw(whiteKing, new Rectangle(rowIndex, colIndex, whiteKing.Width, whiteKing.Height), Color.Beige);
+                spriteBatch.Draw(whiteKing, new Rectangle(GlobalConstants.BoardTopLeftX+i*80, GlobalConstants.BoardTopLeftY, whiteKing.Width, whiteKing.Height), Color.BurlyWood);
                 rowIndex += 70;
             }
 
-            colIndex += 70;
-            rowIndex = 50;
-            for (int i = 0; i < 8; i++)
-            {
-                spriteBatch.Draw(whiteKing, new Rectangle(rowIndex, colIndex, whiteKing.Width, whiteKing.Height), Color.Beige);
-                rowIndex += 70;
-            }
+            
 
 
 

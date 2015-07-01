@@ -6,7 +6,9 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
 using BattleChess.Initialize;
+using BattleChess.Engine;
 using BattleChess.Interfaces;
+using System.Collections.Generic;
 
 namespace BattleChess
 {
@@ -17,17 +19,20 @@ namespace BattleChess
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        public Board Board { get; set; }
+        Engine.Engine engine;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            engine = new Engine.Engine();
 
             graphics.PreferredBackBufferWidth = GlobalConstants.WindowWidth;
             graphics.PreferredBackBufferHeight = GlobalConstants.WindowHeight;
         }
+
+     
+
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -38,11 +43,10 @@ namespace BattleChess
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            this.Board = new Board();
             this.IsMouseVisible = true;
 
             ScreenManager.Instance.Engine = this;
-
+            
             base.Initialize();
         }
 
