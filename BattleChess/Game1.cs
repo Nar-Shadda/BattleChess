@@ -10,6 +10,7 @@ using BattleChess.Engine;
 using BattleChess.Interfaces;
 using System.Collections.Generic;
 using System;
+using BattleChess.Screens;
 
 namespace BattleChess
 {
@@ -21,6 +22,9 @@ namespace BattleChess
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Engine.Engine engine;
+
+        private Texture2D clickedFigure;
+        private Rectangle clickedFigureRectangle;
 
         public Game1()
         {
@@ -81,7 +85,17 @@ namespace BattleChess
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            KeyboardState keyboard = Keyboard.GetState();
 
+            if (keyboard.IsKeyDown(Keys.Enter))
+            {
+                ScreenManager.Instance.ChangeScreens("GameScreen");
+            }
+
+            if (keyboard.IsKeyDown(Keys.Escape))
+            {
+                ScreenManager.Instance.ChangeScreens("MenuScreen");
+            }
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             // Exit();
 
@@ -92,16 +106,19 @@ namespace BattleChess
             {
                 int x = mouse.X - GlobalConstants.BoardTopLeftX;
                 int y = mouse.Y - GlobalConstants.BoardTopLeftY;
-                Position squareClicked = GetCLickedSquare(x, y);
+               
+                Position squareClicked = engine.GetCLickedSquare(x, y);
 
-                if (engine.Board.Squares.ContainsKey(squareClicked))
+                if (engine.Board.Squares.ContainsKey(squareClicked) && engine.Board.Squares[squareClicked] != null)
                 {
-                    engine.Board.Squares[squareClicked] = null;
+                    
+                    clickedFigure = Content.Load<Texture2D>(engine.Board.Squares[squareClicked].ImagePath);
+                    
+                    clickedFigureRectangle = new Rectangle(300, 300, 80, 80);
+                    //engine.Board.Squares[squareClicked] = null;
                 }
                 
             }
-
-
 
             ScreenManager.Instance.CurrentScreen.Update(gameTime);
             base.Update(gameTime);
@@ -116,16 +133,19 @@ namespace BattleChess
             GraphicsDevice.Clear(Color.WhiteSmoke);
 
             // TODO: Add your drawing code here
-            ScreenManager.Instance.CurrentScreen.Draw(spriteBatch);
 
+            if (clickedFigure != null)
+            {
+                spriteBatch.Begin(); 
+                spriteBatch.Draw(clickedFigure, clickedFigureRectangle, Microsoft.Xna.Framework.Color.White);
+                spriteBatch.End();
+            }
+            
+            ScreenManager.Instance.CurrentScreen.Draw(spriteBatch);
+            
             base.Draw(gameTime);
         }
-        private Position GetCLickedSquare(int x, int y)
-        {
-            int col = (int)Math.Ceiling( x / 80.0);
-            int row = (int)Math.Ceiling(y / 80.0);
-            return new Position((char)(col + 'a' - 1), (char)('9' - row));
-
-        }
+        
+        
     }
 }
