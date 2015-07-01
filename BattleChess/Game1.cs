@@ -93,8 +93,12 @@ namespace BattleChess
                 int x = mouse.X - GlobalConstants.BoardTopLeftX;
                 int y = mouse.Y - GlobalConstants.BoardTopLeftY;
                 Position squareClicked = GetCLickedSquare(x, y);
-                engine.Board.Squares[squareClicked] = null;
 
+                if (engine.Board.Squares.ContainsKey(squareClicked))
+                {
+                    engine.Board.Squares[squareClicked] = null;
+                }
+                
             }
 
 

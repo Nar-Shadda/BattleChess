@@ -5,12 +5,10 @@ using System.Text;
 
 namespace BattleChess
 {
-    public class Position
+    public struct Position
     {
-        private char row;
-        private char col;
 
-        public Position(char col, char row)
+        public Position(char col, char row) : this()
         {
             this.Row = row;
             this.Col = col;
