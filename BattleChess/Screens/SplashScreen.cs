@@ -30,7 +30,6 @@ namespace BattleChess.Screens
                 background = content.Load<Texture2D>("Sprites/Backgrounds/SplashScreen0" + screenCount);
                 Thread.Sleep(300);
             }
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
