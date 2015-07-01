@@ -15,6 +15,8 @@ namespace BattleChess.Screens
         private Texture2D border;
         private Texture2D background;
         private Texture2D clickedFigure;
+        private Texture2D player1;
+        private Texture2D player2;
 
         private Dictionary<IFigure, Texture2D> textures;
 
@@ -28,6 +30,9 @@ namespace BattleChess.Screens
             board = content.Load<Texture2D>("Sprites/Boards/board0");
             border = content.Load<Texture2D>("Sprites/Borders/border0");
             background = content.Load<Texture2D>("Sprites/Backgrounds/background0");
+            
+            player1 = content.Load<Texture2D>("Sprites/Players/pesho");
+            player2 = content.Load<Texture2D>("Sprites/Players/gosho");
 
             foreach (var fig in ScreenManager.Instance.Engine.Board.Squares.Values)
             {
@@ -69,7 +74,6 @@ namespace BattleChess.Screens
             spriteBatch.Draw(board, new Rectangle(GlobalConstants.BoardTopLeftX, GlobalConstants.BoardTopLeftY, board.Width, board.Height), Microsoft.Xna.Framework.Color.White);
 
             //draw figures
-
             foreach (var square in ScreenManager.Instance.Engine.Board.Squares.Keys)
             {
 
@@ -83,6 +87,10 @@ namespace BattleChess.Screens
                     spriteBatch.Draw(textures[currentFigure], new Rectangle(y, x, textures[currentFigure].Width, textures[currentFigure].Width), Microsoft.Xna.Framework.Color.White);
                 }
             }
+
+            //draw players
+            spriteBatch.Draw(player1, new Rectangle(850, 100, player1.Width, player1.Height), Color.White);
+            spriteBatch.Draw(player2, new Rectangle(850, 400, player2.Width, player2.Height), Color.White);
 
             //draw clicked figure
             if (clickedFigure != null)
