@@ -1,15 +1,15 @@
-﻿using BattleChess.GameObjects.Board;
-using BattleChess.Initialize;
-using BattleChess.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
+
+using BattleChess.GameObjects.Board;
+using BattleChess.Interfaces;
+using BattleChess.Screens;
+using BattleChess.Enumerations;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Color = BattleChess.Enumerations.Color;
 
 namespace BattleChess.Engine
 {
@@ -17,6 +17,7 @@ namespace BattleChess.Engine
     {
         private Board board;
         private List<IPlayer> players;
+        ButtonState previousButtonState = ButtonState.Released;
 
         public IFigure ClickedFigure { get; set; }
         public Rectangle ClickedFigureRectangle { get; private set; }
@@ -28,13 +29,10 @@ namespace BattleChess.Engine
             this.Board = new Board();
             this.players = new List<IPlayer> 
             {
-                new Player("Gosho", Color.White),
-                new Player("Pesho", Color.Black)
+                new Player("Gosho", Enumerations.Color.White),
+                new Player("Pesho", Enumerations.Color.Black)
             };
-
-
         }
-
 
         public IEnumerable<IPlayer> Players
         {
@@ -62,20 +60,28 @@ namespace BattleChess.Engine
         {
             KeyboardState keyboard = Keyboard.GetState();
 
-            if (keyboard.IsKeyDown(Keys.Enter))
+            if (keyboard.IsKeyDown(Keys.Enter) && (ScreenManager.Instance.CurrentScreen is SplashScreen))
             {
+                Thread.Sleep(300);
                 ScreenManager.Instance.ChangeScreens("GameScreen");
             }
 
             if (keyboard.IsKeyDown(Keys.Escape))
             {
-                ScreenManager.Instance.ChangeScreens("MenuScreen");
+                if (ScreenManager.Instance.CurrentScreen is MenuScreen)
+                {
+                    Thread.Sleep(300);
+                    ScreenManager.Instance.ChangeScreens("GameScreen");
+                }
+                
+                else
+                {
+                    Thread.Sleep(300);
+                    ScreenManager.Instance.ChangeScreens("MenuScreen");
+                }
             }
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            // Exit();
 
-            // TODO: Add your update logic here
-
+            //Read mouse state and handle input
             MouseState mouse = Mouse.GetState();
             if (mouse.LeftButton == ButtonState.Pressed)
             {
@@ -84,13 +90,17 @@ namespace BattleChess.Engine
 
                 Position squareClicked = GetCLickedSquare(x, y);
 
-                if (Board.Squares.ContainsKey(squareClicked) && Board.Squares[squareClicked] != null)
+                if (Board.Squares.ContainsKey(squareClicked))
                 {
-
+                    if (mouse.LeftButton == ButtonState.Released && previousButtonState == ButtonState.Pressed)
+                    {
+                        
+                    }
                     ClickedFigure = Board.Squares[squareClicked];
-                    ClickedFigureRectangle = new Rectangle(mouse.X, mouse.Y, 80, 80);
+                    ClickedFigureRectangle = new Rectangle(mouse.X - 40, mouse.Y - 40, 80, 80);
                     //this.Board.Squares[squareClicked] = null;
                 }
+                previousButtonState = mouse.LeftButton;
             }
         }
     }

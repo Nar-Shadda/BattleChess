@@ -21,7 +21,7 @@ namespace BattleChess.Screens
         {
             base.LoadContent();
 
-            background = content.Load<Texture2D>("Sprites/Backgrounds/background0");
+            background = content.Load<Texture2D>("Sprites/Menu/MenuBackground");
         }
 
         public override void Update(GameTime gameTime)
