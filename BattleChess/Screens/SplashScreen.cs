@@ -32,28 +32,21 @@ namespace BattleChess.Screens
         public override void LoadContent()
         {
             base.LoadContent();
-            
-                whiteKing = content.Load<Texture2D>("Sprites/Figures/KingWhite");
-                blackKing = content.Load<Texture2D>("Sprites/Figures/KingWhite");
+
+            whiteKing = content.Load<Texture2D>("Sprites/Figures/KingWhite");
+            blackKing = content.Load<Texture2D>("Sprites/Figures/KingWhite");
             board = content.Load<Texture2D>("Sprites/Boards/board0");
 
             drawRectangle = new Rectangle(100, 100, whiteKing.Width, whiteKing.Height);
             drawRectangle1 = new Rectangle(200, 200, blackKing.Width, blackKing.Height);
 
-            drawables = new List<Texture2D>{whiteKing, blackKing};
+            drawables = new List<Texture2D> { whiteKing, blackKing };
 
         }
 
         public override void Update(GameTime gameTime)
         {
-            //draw = drawables[index];
-            
-            //index++;
-
-            //if (index == drawables.Count)
-            //{
-            //    index = 0;
-            //}
+            //TODO: update drawables list from engine
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -62,9 +55,9 @@ namespace BattleChess.Screens
             int colIndex = 50;
 
             spriteBatch.Begin();
-            
-            spriteBatch.Draw(board, new Rectangle(0,0, board.Width,board.Height), Color.White);
-            
+
+            spriteBatch.Draw(board, new Rectangle(0, 0, board.Width, board.Height), Color.White);
+
             for (int i = 0; i < 8; i++)
             {
                 spriteBatch.Draw(whiteKing, new Rectangle(rowIndex, colIndex, whiteKing.Width, whiteKing.Height), Color.Beige);
@@ -79,9 +72,9 @@ namespace BattleChess.Screens
                 rowIndex += 70;
             }
 
-            
 
-            
+
+
             spriteBatch.End();
         }
     }
