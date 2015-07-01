@@ -31,7 +31,7 @@ namespace BattleChess.Screens
         public override void Update(GameTime gameTime)
         {
             //TODO: get list from engine
-            //this.drawables = Game1.Board.board;
+            //this.drawables = Game1.board.Squares;
         }
 
         

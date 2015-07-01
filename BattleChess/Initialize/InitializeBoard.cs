@@ -1,17 +1,19 @@
-﻿namespace BattleChess.Initialize
+﻿using BattleChess.Enumerations;
+using BattleChess.GameObjects.Board;
+using BattleChess.GameObjects.Figures;
+using BattleChess.Interfaces;
+using System;
+using System.Collections.Generic;
+
+
+namespace BattleChess.Initialize
 {
-    using System;
-    using System.Collections.Generic;
-
-    using global::BattleChess.GameObjects.Figures;
-    using global::BattleChess.Interfaces;
-
-    public delegate void Initialize();
-    public  class InitializeBoard
+    
+    public static class InitializeBoard
     {
         private const int BoardTotalRowsAndCols = 8;
 
-        private readonly IList<Type> figureTypes = new List<Type>
+        private static readonly IList<Type> figureTypes = new List<Type>
             {
                 typeof(Rook), 
                 typeof(Knight), 
@@ -23,36 +25,34 @@
                 typeof(Rook)
             };
 
-        public void Initialize(IList<IPlayer> players, IBoard board)
+        public static void Initialize(Board board)
         {
             
-            var firstPlayer = players[0];
-            var secondPlayer = players[1];
+            
+            AddArmyToBoardRow(Color.Black, board,  '8');
+            AddPawnsToBoardRow(Color.Black, board, '7');
 
-            this.AddArmyToBoardRow(firstPlayer, board, '8');
-            this.AddPawnsToBoardRow(firstPlayer, board, '7');
+            AddPawnsToBoardRow(Color.White, board, '2');
+            AddArmyToBoardRow(Color.White, board, '1');
+        }  
 
-            this.AddPawnsToBoardRow(secondPlayer, board, '2');
-            this.AddArmyToBoardRow(secondPlayer, board, '1');
-        }
-
-        private  void AddPawnsToBoardRow(IPlayer player, IBoard board, char chessRow)
+        private static void AddPawnsToBoardRow(Color color, Board board, char chessRow)
         {
             for (int i = 0; i < BoardTotalRowsAndCols; i++)
             {
-                var pawn = new Pawn(player.Color);
+                var pawn = new Pawn(color);
                 var position = new Position(chessRow, (char)(i + 'a'));
                 
                 board.AddFigure(pawn, position);
             }
         }
 
-        private void AddArmyToBoardRow(IPlayer player, IBoard board, char chessRow)
+        private static void AddArmyToBoardRow(Color color, Board board, char chessRow)
         {
             for (int i = 0; i < BoardTotalRowsAndCols; i++)
             {
-                var figureType = this.figureTypes[i];
-                var figureInstance = (IFigure)Activator.CreateInstance(figureType, player.Color);
+                var figureType = figureTypes[i];
+                var figureInstance = (IFigure)Activator.CreateInstance(figureType, color);
                 var position = new Position(chessRow, (char)(i + 'a'));
                 board.AddFigure(figureInstance, position);
             }

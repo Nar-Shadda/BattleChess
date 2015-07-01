@@ -5,22 +5,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BattleChess.GameObjects.Figures;
+using BattleChess.Initialize;
 
 namespace BattleChess.GameObjects.Board
 {
     public class Board : IBoard
     {
-        public Dictionary<Position, IFigure> board = new Dictionary<Position, IFigure>();
 
         public Board() 
         {
-                
+
+            this.Squares = new Dictionary<Position, IFigure>();
+            InitializeBoard.Initialize(this);
+
         }
 
+        public Dictionary<Position, IFigure> Squares { get; set; }
 
         public void AddFigure(IFigure figure, Position position)
         {
-            board[position] = figure;
+            this.Squares[position] = figure;
         }
     }
 }
