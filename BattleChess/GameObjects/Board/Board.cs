@@ -1,14 +1,10 @@
-﻿using BattleChess.Enumerations;
-using BattleChess.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BattleChess.GameObjects.Figures;
-using BattleChess.Initialize;
-
-namespace BattleChess.GameObjects.Board
+﻿namespace BattleChess.GameObjects.Board
 {
+    using System.Collections.Generic;
+
+    using global::BattleChess.Initialize;
+    using global::BattleChess.Interfaces;
+
     public class Board : IBoard
     {
 

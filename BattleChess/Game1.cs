@@ -25,7 +25,6 @@ namespace BattleChess
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            engine = new Engine.Engine();
 
             graphics.PreferredBackBufferWidth = GlobalConstants.WindowWidth;
             graphics.PreferredBackBufferHeight = GlobalConstants.WindowHeight;
@@ -44,8 +43,7 @@ namespace BattleChess
         {
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
-
-            ScreenManager.Instance.Engine = this;
+            
             
             base.Initialize();
         }
@@ -57,7 +55,8 @@ namespace BattleChess
         protected override void LoadContent()
         {
             //TODO: Load content here - text, sprites, audio etc. 
-
+            engine = new Engine.Engine();
+            ScreenManager.Instance.Engine = engine;
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ScreenManager.Instance.LoadContent(Content);

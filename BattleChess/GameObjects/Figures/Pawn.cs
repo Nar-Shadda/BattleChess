@@ -1,4 +1,5 @@
 ﻿using BattleChess.Enumerations;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace BattleChess.GameObjects.Figures
             
         }
 
-        public override List<Position> CalcValidMoves(Position currentPosition,Board board)
+        public override List<Position> CalcValidMoves(Position currentPosition, Board board)
         {
             List<Position> valid = new List<Position>();
             if (this.Color == Color.White)
@@ -30,12 +31,14 @@ namespace BattleChess.GameObjects.Figures
                 {
                     valid.Add(frontPosition);
                 }
+
                 if (board.Squares.ContainsKey(leftDiagonalPosition)
                     && board.Squares[leftDiagonalPosition] != null
                     && board.Squares[leftDiagonalPosition].Color == Color.Black)
                 {
                     valid.Add(leftDiagonalPosition);
                 }
+
                 if (board.Squares.ContainsKey(rightDiagonalPosition)
                     && board.Squares[rightDiagonalPosition] != null
                     && board.Squares[rightDiagonalPosition].Color == Color.Black)
@@ -54,12 +57,14 @@ namespace BattleChess.GameObjects.Figures
                 {
                     valid.Add(frontPosition);
                 }
+
                 if (board.Squares.ContainsKey(leftDiagonalPosition)
                     && board.Squares[leftDiagonalPosition] != null
                     && board.Squares[leftDiagonalPosition].Color == Color.White)
                 {
                     valid.Add(leftDiagonalPosition);
                 }
+
                 if (board.Squares.ContainsKey(rightDiagonalPosition)
                     && board.Squares[rightDiagonalPosition] != null
                     && board.Squares[rightDiagonalPosition].Color == Color.White)
