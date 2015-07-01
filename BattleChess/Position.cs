@@ -17,6 +17,7 @@ namespace BattleChess
             this.Col = col;
 
         }
+
         public char Row { get; set; }
 
         public char Col { get; set; }

@@ -22,5 +22,9 @@ namespace BattleChess
         public const string Bishop = "Sprites/Figures/Bishop";
         public const string Knight = "Sprites/Figures/Knight";
         public const string Rook = "Sprites/Figures/Rook";
+
+        public const string forbidenName = "kur";
+        public const int NameMaxLenght = 10;
+        public const int NameMinLenght = 3;
     }
 }
