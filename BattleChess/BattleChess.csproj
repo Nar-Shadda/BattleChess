@@ -79,6 +79,7 @@
     <Content Include="Content\Sprites\Boards\board0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\Borders\border0.jpg" />
     <Content Include="Content\Sprites\Figures\BishopWhite.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
