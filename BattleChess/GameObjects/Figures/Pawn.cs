@@ -51,9 +51,9 @@ namespace BattleChess.GameObjects.Figures
             }
             else
             {
-                Position frontPosition = new Position(col, row--);
-                Position leftDiagonalPosition = new Position(col--, row--);
-                Position rightDiagonalPosition = new Position(col++, row--);
+                Position frontPosition = new Position(col, (char)(row-1));
+                Position leftDiagonalPosition = new Position((char)(col-1), (char)(row-1));
+                Position rightDiagonalPosition = new Position((char)(col+1), (char)(row-1));
 
                 if (board.Squares.ContainsKey(frontPosition) && board.Squares[frontPosition] == null)
                 {

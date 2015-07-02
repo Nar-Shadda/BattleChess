@@ -27,11 +27,12 @@ this.FrontLegalPositionsMovesCheck(currentPosition, board);
 
         private void RightLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
+            
             while (true)
             {
-                Position frontPosition = new Position(col++, row);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+                Position frontPosition = new Position((char)(col+1), row);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -59,11 +60,12 @@ this.FrontLegalPositionsMovesCheck(currentPosition, board);
 
         private void LeftLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
+            
             while (true)
             {
-                Position frontPosition = new Position(col--, row);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+                Position frontPosition = new Position((char)(col-1), row);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -91,11 +93,12 @@ this.FrontLegalPositionsMovesCheck(currentPosition, board);
 
         private void BackLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
+            
             while (true)
             {
-                Position frontPosition = new Position(col, row++);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+                Position frontPosition = new Position(col, (char)(row+1));
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -123,11 +126,12 @@ this.FrontLegalPositionsMovesCheck(currentPosition, board);
 
         private void FrontLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
+            
             while (true)
             {
-                Position frontPosition = new Position(col, row--);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+                Position frontPosition = new Position(col, (char)(row-1));
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {

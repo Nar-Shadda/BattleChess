@@ -23,14 +23,14 @@ namespace BattleChess.GameObjects.Figures
             char row = currentPosition.Row;
             List<Position> checkLegalPositions = new List<Position>()
             {
-                new Position(col++,(char)(row-2)),
-                new Position((char)(col+2),row--),
-                new Position((char)(col+2),row++),
-                new Position(col++,(char)(row+2)),
-                new Position(col--,(char)(row+2)),
-                new Position((char)(col-2),row++),
-                new Position((char)(col-2),row--),
-                new Position(col--,(char)(row-2)),
+                new Position((char)(col+1),(char)(row-2)),
+                new Position((char)(col+2),(char)(row-1)),
+                new Position((char)(col+2),(char)(row+1)),
+                new Position((char)(col+1),(char)(row+2)),
+                new Position((char)(col-1),(char)(row+2)),
+                new Position((char)(col-2),(char)(row+1)),
+                new Position((char)(col-2),(char)(row-1)),
+                new Position((char)(col-1),(char)(row-2)),
             };
             
             foreach (var position in checkLegalPositions)

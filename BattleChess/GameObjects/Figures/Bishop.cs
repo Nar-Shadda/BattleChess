@@ -24,16 +24,17 @@ namespace BattleChess.GameObjects.Figures
             this.LeftUpDiagonalCheck(currentPosition, board);
             this.LeftDownDiagonalCheck(currentPosition, board);
             this.RightDownDiagonalCheck(currentPosition, board);
-            
+
         }
 
         private void RightDownDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
+            
             while (true)
             {
-                Position frontPosition = new Position(col++, row++);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+                Position frontPosition = new Position((char)(col + 1), (char)(row + 1));
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -62,11 +63,12 @@ namespace BattleChess.GameObjects.Figures
 
         private void LeftDownDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
             while (true)
             {
-                Position frontPosition = new Position(col--, row++);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+
+                Position frontPosition = new Position((char)(col - 1), (char)(row + 1));
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -95,11 +97,12 @@ namespace BattleChess.GameObjects.Figures
 
         private void LeftUpDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
+
             while (true)
             {
-                Position frontPosition = new Position(col--, row--);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+                Position frontPosition = new Position((char)(col - 1), (char)(row - 1));
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -128,11 +131,12 @@ namespace BattleChess.GameObjects.Figures
 
         private void RightUpDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = currentPosition.Col;
-            char row = currentPosition.Row;
+
             while (true)
             {
-                Position frontPosition = new Position(col++, row--);
+                char col = currentPosition.Col;
+                char row = currentPosition.Row;
+                Position frontPosition = new Position((char)(col + 1), (char)(row - 1));
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
