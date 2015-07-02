@@ -31,7 +31,7 @@ namespace BattleChess.GameObjects.Figures
         {
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col++, currentPosition.Row++);
+                Position frontPosition = new Position(col++, row++);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -62,7 +62,7 @@ namespace BattleChess.GameObjects.Figures
         {
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col--, currentPosition.Row++);
+                Position frontPosition = new Position(col--, row++);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -93,7 +93,7 @@ namespace BattleChess.GameObjects.Figures
         {
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col--, currentPosition.Row--);
+                Position frontPosition = new Position(col--, row--);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -124,7 +124,7 @@ namespace BattleChess.GameObjects.Figures
         {
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col++, currentPosition.Row--);
+                Position frontPosition = new Position(col++, row--);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {

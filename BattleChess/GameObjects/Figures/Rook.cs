@@ -19,19 +19,19 @@ namespace BattleChess.GameObjects.Figures
 
         public override void CalcLegalPositions(Position currentPosition, Board board)
         {
-            List<Position> LegalPositions = new List<Position>();
-
-            this.FrontLegalPositionsMovesCheck(currentPosition, board, LegalPositions);
-            this.BackLegalPositionsMovesCheck(currentPosition, board, LegalPositions);
-            this.LeftLegalPositionsMovesCheck(currentPosition, board, LegalPositions);
-            this.RightLegalPositionsMovesCheck(currentPosition, board, LegalPositions);
+this.FrontLegalPositionsMovesCheck(currentPosition, board);
+            this.BackLegalPositionsMovesCheck(currentPosition, board);
+            this.LeftLegalPositionsMovesCheck(currentPosition, board);
+            this.RightLegalPositionsMovesCheck(currentPosition, board);
         }
 
-        private void RightLegalPositionsMovesCheck(Position currentPosition, Board board, List<Position> LegalPositions)
+        private void RightLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col++, currentPosition.Row);
+                Position frontPosition = new Position(col++, row);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -57,11 +57,13 @@ namespace BattleChess.GameObjects.Figures
             }
         }
 
-        private void LeftLegalPositionsMovesCheck(Position currentPosition, Board board, List<Position> LegalPositions)
+        private void LeftLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col--, currentPosition.Row);
+                Position frontPosition = new Position(col--, row);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -87,11 +89,13 @@ namespace BattleChess.GameObjects.Figures
             }
         }
 
-        private void BackLegalPositionsMovesCheck(Position currentPosition, Board board, List<Position> LegalPositions)
+        private void BackLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col, currentPosition.Row++);
+                Position frontPosition = new Position(col, row++);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {
@@ -117,11 +121,11 @@ namespace BattleChess.GameObjects.Figures
             }
         }
 
-        private void FrontLegalPositionsMovesCheck(Position currentPosition, Board board, List<Position> LegalPositions)
+        private void FrontLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
             while (true)
             {
-                Position frontPosition = new Position(currentPosition.Col, currentPosition.Row--);
+                Position frontPosition = new Position(col, row--);
 
                 if (board.Squares.ContainsKey(frontPosition))
                 {

@@ -22,14 +22,14 @@ namespace BattleChess.GameObjects.Figures
             
             List<Position> checkLegalPositions = new List<Position>()
             {
-                new Position(currentPosition.Col++,(char)(currentPosition.Row-2)),
-                new Position((char)(currentPosition.Col+2),currentPosition.Row--),
-                new Position((char)(currentPosition.Col+2),currentPosition.Row++),
-                new Position(currentPosition.Col++,(char)(currentPosition.Row+2)),
-                new Position(currentPosition.Col--,(char)(currentPosition.Row+2)),
-                new Position((char)(currentPosition.Col-2),currentPosition.Row++),
-                new Position((char)(currentPosition.Col-2),currentPosition.Row--),
-                new Position(currentPosition.Col--,(char)(currentPosition.Row-2)),
+                new Position(col++,(char)(row-2)),
+                new Position((char)(col+2),row--),
+                new Position((char)(col+2),row++),
+                new Position(col++,(char)(row+2)),
+                new Position(col--,(char)(row+2)),
+                new Position((char)(col-2),row++),
+                new Position((char)(col-2),row--),
+                new Position(col--,(char)(row-2)),
             };
             
             foreach (var position in checkLegalPositions)
