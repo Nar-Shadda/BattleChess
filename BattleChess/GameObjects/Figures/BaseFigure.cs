@@ -25,7 +25,7 @@ namespace BattleChess.GameObjects.Figures
 
         public string ImagePath { get; set; }
 
-        public abstract List<Position> CalcValidMoves(Position currentPosition,Board board);
+        public abstract void CalcLegalPositions(Position currentPosition, Board board);
 
     }
 }

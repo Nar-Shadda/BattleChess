@@ -30,7 +30,6 @@ namespace BattleChess.Screens
         private Rectangle exitRectangle;
 
         private bool isExitClicked;
-        private bool isPlayersClicked;
 
         public override void LoadContent()
         {
@@ -74,7 +73,6 @@ namespace BattleChess.Screens
                     newGame = newGameClicked;
 
                     ScreenManager.Instance.Engine = new Engine.Engine();
-
                     ScreenManager.Instance.ChangeScreens("GameScreen");
                 }
 

@@ -13,7 +13,6 @@ namespace BattleChess.Screens
 {
     public abstract class Screen
     {
-        private IList<IDrawable> drawables;
 
         protected ContentManager content;
 

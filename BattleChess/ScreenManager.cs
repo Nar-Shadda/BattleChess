@@ -18,7 +18,6 @@ namespace BattleChess
     {
         private static ScreenManager instance;
         public ContentManager Content { private set; get; }
-        private Engine.Engine engine;
 
         private Screen currentScreen;
 

@@ -7,10 +7,6 @@ namespace BattleChess.GameObjects
 {
     public abstract class GameObject
     {
-        private Position position;
-        private int width;
-        private int height;
-
         public GameObject()
         {
             

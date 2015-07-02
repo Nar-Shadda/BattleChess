@@ -15,9 +15,9 @@ namespace BattleChess.GameObjects.Figures
         {
         }
 
-        public override List<Position> CalcValidMoves(Position currentPosition, Board board)
+        public override void CalcLegalPositions(Position currentPosition, Board board)
         {
-            List<Position> checkValid = new List<Position>()
+            List<Position> checkLegalPositions = new List<Position>()
             {
                 new Position(currentPosition.Col++,currentPosition.Row--),
                 new Position(currentPosition.Col++,currentPosition.Row),
@@ -28,32 +28,38 @@ namespace BattleChess.GameObjects.Figures
                 new Position(currentPosition.Col--,currentPosition.Row--),
                 new Position(currentPosition.Col,currentPosition.Row--),
             };
-            return checkValid.Where(position => this.ValidMovesCheck(position, board)).ToList();
+            foreach (var position in checkLegalPositions)
+            {
+                if (LegalPositionsMovesCheck(position, board))
+                {
+                    LegalPositions.Add(position);
+                }
+            }
         }
 
-        private bool ValidMovesCheck(Position frontPosition,Board board)
+        private bool LegalPositionsMovesCheck(Position frontPosition, Board board)
         {
-                if (board.Squares.ContainsKey(frontPosition))
+            if (board.Squares.ContainsKey(frontPosition))
+            {
+                if (board.Squares[frontPosition] == null)
                 {
-                    if (board.Squares[frontPosition] == null)
-                    {
-                        return true;
-                    }
-                    else if (board.Squares[frontPosition].Color == this.Color)
-                    {
-         
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                        
-                    }
+                    return true;
+                }
+                else if (board.Squares[frontPosition].Color == this.Color)
+                {
+
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    return true;
+
                 }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

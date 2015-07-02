@@ -18,62 +18,63 @@ namespace BattleChess.GameObjects.Figures
             
         }
 
-        public override List<Position> CalcValidMoves(Position currentPosition, Board board)
+        public override void CalcLegalPositions(Position currentPosition, Board board)
         {
-            List<Position> valid = new List<Position>();
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
+
             if (this.Color == Color.White)
             {
-                Position frontPosition = new Position(currentPosition.Col, currentPosition.Row++);
-                Position leftDiagonalPosition = new Position(currentPosition.Col--, currentPosition.Row ++);
-                Position rightDiagonalPosition = new Position(currentPosition.Col++, currentPosition.Row++);
+                Position frontPosition = new Position(col, (char)(row+1));
+                Position leftDiagonalPosition = new Position((char)(col - 1), (char)(row + 1));
+                Position rightDiagonalPosition = new Position((char)(col + 1), (char)(row + 1));
 
                 if (board.Squares.ContainsKey(frontPosition) && board.Squares[frontPosition] == null)
                 {
-                    valid.Add(frontPosition);
+                    LegalPositions.Add(frontPosition);
                 }
 
                 if (board.Squares.ContainsKey(leftDiagonalPosition)
                     && board.Squares[leftDiagonalPosition] != null
                     && board.Squares[leftDiagonalPosition].Color == Color.Black)
                 {
-                    valid.Add(leftDiagonalPosition);
+                    LegalPositions.Add(leftDiagonalPosition);
                 }
 
                 if (board.Squares.ContainsKey(rightDiagonalPosition)
                     && board.Squares[rightDiagonalPosition] != null
                     && board.Squares[rightDiagonalPosition].Color == Color.Black)
                 {
-                    valid.Add(rightDiagonalPosition);
+                    LegalPositions.Add(rightDiagonalPosition);
                 }
 
             }
             else
             {
-                Position frontPosition = new Position(currentPosition.Col, currentPosition.Row--);
-                Position leftDiagonalPosition = new Position(currentPosition.Col--, currentPosition.Row--);
-                Position rightDiagonalPosition = new Position(currentPosition.Col++, currentPosition.Row--);
+                Position frontPosition = new Position(col, row--);
+                Position leftDiagonalPosition = new Position(col--, row--);
+                Position rightDiagonalPosition = new Position(col++, row--);
 
                 if (board.Squares.ContainsKey(frontPosition) && board.Squares[frontPosition] == null)
                 {
-                    valid.Add(frontPosition);
+                    LegalPositions.Add(frontPosition);
                 }
 
                 if (board.Squares.ContainsKey(leftDiagonalPosition)
                     && board.Squares[leftDiagonalPosition] != null
                     && board.Squares[leftDiagonalPosition].Color == Color.White)
                 {
-                    valid.Add(leftDiagonalPosition);
+                    LegalPositions.Add(leftDiagonalPosition);
                 }
 
                 if (board.Squares.ContainsKey(rightDiagonalPosition)
                     && board.Squares[rightDiagonalPosition] != null
                     && board.Squares[rightDiagonalPosition].Color == Color.White)
                 {
-                    valid.Add(rightDiagonalPosition);
+                    LegalPositions.Add(rightDiagonalPosition);
                 }
             }
 
-            return valid.ToList();
         }
     }
 }

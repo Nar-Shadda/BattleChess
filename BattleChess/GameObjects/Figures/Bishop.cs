@@ -11,22 +11,23 @@ namespace BattleChess.GameObjects.Figures
 
     public class Bishop : BaseFigure
     {
+        List<Position> LegalPositions = new List<Position>();
+
         public Bishop(Color color)
             : base(color, GlobalConstants.Bishop + color)
         {
         }
 
-        public override List<Position> CalcValidMoves(Position currentPosition, Board board)
+        public override void CalcLegalPositions(Position currentPosition, Board board)
         {
-            List<Position> valid = new List<Position>();
-            this.RightUpDiagonalCheck(currentPosition, board, valid);
-            this.LeftUpDiagonalCheck(currentPosition, board, valid);
-            this.LeftDownDiagonalCheck(currentPosition, board, valid);
-            this.RightDownDiagonalCheck(currentPosition, board, valid);
-            return valid;
+            this.RightUpDiagonalCheck(currentPosition, board);
+            this.LeftUpDiagonalCheck(currentPosition, board);
+            this.LeftDownDiagonalCheck(currentPosition, board);
+            this.RightDownDiagonalCheck(currentPosition, board);
+            
         }
 
-        private void RightDownDiagonalCheck(Position currentPosition, Board board, List<Position> valid)
+        private void RightDownDiagonalCheck(Position currentPosition, Board board)
         {
             while (true)
             {
@@ -36,7 +37,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     if (board.Squares[frontPosition] == null)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                     }
                     else if (board.Squares[frontPosition].Color == this.Color)
                     {
@@ -44,7 +45,7 @@ namespace BattleChess.GameObjects.Figures
                     }
                     else if (board.Squares[frontPosition].Color != this.Color)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                         break;
                     }
                 }
@@ -57,7 +58,7 @@ namespace BattleChess.GameObjects.Figures
             }
         }
 
-        private void LeftDownDiagonalCheck(Position currentPosition, Board board, List<Position> valid)
+        private void LeftDownDiagonalCheck(Position currentPosition, Board board)
         {
             while (true)
             {
@@ -67,7 +68,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     if (board.Squares[frontPosition] == null)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                     }
                     else if (board.Squares[frontPosition].Color == this.Color)
                     {
@@ -75,7 +76,7 @@ namespace BattleChess.GameObjects.Figures
                     }
                     else if (board.Squares[frontPosition].Color != this.Color)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                         break;
                     }
                 }
@@ -88,7 +89,7 @@ namespace BattleChess.GameObjects.Figures
             }
         }
 
-        private void LeftUpDiagonalCheck(Position currentPosition, Board board, List<Position> valid)
+        private void LeftUpDiagonalCheck(Position currentPosition, Board board)
         {
             while (true)
             {
@@ -98,7 +99,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     if (board.Squares[frontPosition] == null)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                     }
                     else if (board.Squares[frontPosition].Color == this.Color)
                     {
@@ -106,7 +107,7 @@ namespace BattleChess.GameObjects.Figures
                     }
                     else if (board.Squares[frontPosition].Color != this.Color)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                         break;
                     }
                 }
@@ -119,7 +120,7 @@ namespace BattleChess.GameObjects.Figures
             }
         }
 
-        private void RightUpDiagonalCheck(Position currentPosition, Board board, List<Position> valid)
+        private void RightUpDiagonalCheck(Position currentPosition, Board board)
         {
             while (true)
             {
@@ -129,7 +130,7 @@ namespace BattleChess.GameObjects.Figures
                 {
                     if (board.Squares[frontPosition] == null)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                     }
                     else if (board.Squares[frontPosition].Color == this.Color)
                     {
@@ -137,7 +138,7 @@ namespace BattleChess.GameObjects.Figures
                     }
                     else if (board.Squares[frontPosition].Color != this.Color)
                     {
-                        valid.Add(frontPosition);
+                        LegalPositions.Add(frontPosition);
                         break;
                     }
                 }

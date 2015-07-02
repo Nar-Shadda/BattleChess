@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 using BattleChess.GameObjects.Board;
@@ -17,21 +18,28 @@ namespace BattleChess.Engine
     {
         private Board board;
         private List<IPlayer> players;
+        private Player currentPlayer;
+        private bool currentPlayerHasMoved;
+        private bool isWhite = true;
+        private Position positionToClear;
         ButtonState previousButtonState = ButtonState.Released;
 
         public IFigure ClickedFigure { get; set; }
         public Rectangle ClickedFigureRectangle { get; private set; }
         public ContentManager Content { get; set; }
 
+
+
         public Engine()
         {
-            
+
             this.Board = new Board();
             this.players = new List<IPlayer> 
             {
                 new Player("Gosho", Enumerations.Color.White),
                 new Player("Pesho", Enumerations.Color.Black)
             };
+            currentPlayer = (Player)players[0];
         }
 
         public IEnumerable<IPlayer> Players
@@ -53,6 +61,12 @@ namespace BattleChess.Engine
             int col = (int)Math.Ceiling(x / 80.0);
             int row = (int)Math.Ceiling(y / 80.0);
             return new Position((char)(col + 'a' - 1), (char)('9' - row));
+
+        }
+
+        public void NextTurn()
+        {
+            UpdateGameState();
 
         }
 
@@ -89,23 +103,55 @@ namespace BattleChess.Engine
                 int y = mouse.Y - GlobalConstants.BoardTopLeftY;
 
                 Position squareClicked = GetCLickedSquare(x, y);
-                
-                if (this.Board.Squares[squareClicked] != null)
-                {
-                    ClickedFigure = Board.Squares[squareClicked];
 
+                if (Board.Squares[squareClicked] != null && ClickedFigure == null)
+                {
+                    if (Board.Squares[squareClicked].Color == currentPlayer.Color)
+                    {
+                        ClickedFigure = Board.Squares[squareClicked];
+                        positionToClear = Board.Squares.Keys.FirstOrDefault(pos => pos.Equals(squareClicked));
+
+                        //calculate valid moves
+                        ClickedFigure.CalcLegalPositions(squareClicked, Board);
+                    }
+
+                    Board.Squares[squareClicked] = ClickedFigure;
                 }
+
+
                 if (ClickedFigure != null)
                 {
-                    this.Board.Squares[squareClicked] = ClickedFigure;
+                    if (Board.Squares[squareClicked] == null || Board.Squares[squareClicked].Color != currentPlayer.Color)
+                    {
+                        if (ClickedFigure.LegalPositions.Contains(squareClicked))
+                        {
+
+                            Board.Squares[squareClicked] = ClickedFigure;
+
+                            ClickedFigure = null;
+                            ClickedFigureRectangle = Rectangle.Empty;
+                            Board.Squares[positionToClear] = null;
+                            currentPlayerHasMoved = true;
+
+                            Thread.Sleep(500);
+                        }
+
+
+                        if (currentPlayerHasMoved)
+                        {
+                            isWhite = !isWhite;
+                            currentPlayerHasMoved = false;
+                            currentPlayer = isWhite ? (Player)players[0] : (Player)players[1];
+                        }
+
+                        return;
+                    }
                 }
-                
-               
+
                 previousButtonState = mouse.LeftButton;
             }
-            
-            ClickedFigureRectangle = new Rectangle(mouse.X - 40, mouse.Y - 40, 80, 80);
 
+            ClickedFigureRectangle = ClickedFigure == null ? Rectangle.Empty : new Rectangle(mouse.X - 40, mouse.Y - 40, 80, 80);
 
             //this.Board.Squares[squareClicked] = null;
         }

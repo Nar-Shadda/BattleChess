@@ -10,15 +10,17 @@ namespace BattleChess.GameObjects.Figures
 
     public class Knight : BaseFigure
     {
+        List<Position> LegalMoves = new List<Position>();
+
         public Knight(Color color)
             : base(color, GlobalConstants.Knight + color)
         {
         }
 
-        public override List<Position> CalcValidMoves(Position currentPosition, Board board)
+        public override void CalcLegalPositions(Position currentPosition, Board board)
         {
-            List<Position> valid = new List<Position>();
-            List<Position> checkValid = new List<Position>()
+            
+            List<Position> checkLegalPositions = new List<Position>()
             {
                 new Position(currentPosition.Col++,(char)(currentPosition.Row-2)),
                 new Position((char)(currentPosition.Col+2),currentPosition.Row--),
@@ -29,17 +31,17 @@ namespace BattleChess.GameObjects.Figures
                 new Position((char)(currentPosition.Col-2),currentPosition.Row--),
                 new Position(currentPosition.Col--,(char)(currentPosition.Row-2)),
             };
-            foreach (var position in checkValid)
+            
+            foreach (var position in checkLegalPositions)
             {
-                if (this.ValidMovesCheck(position, board))
+                if (this.LegalPositionsMovesCheck(position, board))
                 {
-                    valid.Add(position);
+                    LegalPositions.Add(position);
                 }
             }
-            return valid;
         }
 
-        private bool ValidMovesCheck(Position frontPosition, Board board)
+        private bool LegalPositionsMovesCheck(Position frontPosition, Board board)
         {
             if (board.Squares.ContainsKey(frontPosition))
             {

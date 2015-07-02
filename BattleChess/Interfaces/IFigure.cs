@@ -14,6 +14,6 @@ namespace BattleChess.Interfaces
 
         List<Position> LegalPositions { get; set; }
 
-        List<Position> CalcValidMoves(Position currentPosition, Board board);
+        void CalcLegalPositions(Position currentPosition, Board board);
     }
 }
