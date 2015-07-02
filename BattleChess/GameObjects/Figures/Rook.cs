@@ -123,6 +123,8 @@ this.FrontLegalPositionsMovesCheck(currentPosition, board);
 
         private void FrontLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
                 Position frontPosition = new Position(col, row--);

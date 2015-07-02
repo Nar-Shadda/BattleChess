@@ -29,6 +29,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void RightDownDiagonalCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
                 Position frontPosition = new Position(col++, row++);
@@ -60,6 +62,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void LeftDownDiagonalCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
                 Position frontPosition = new Position(col--, row++);
@@ -91,6 +95,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void LeftUpDiagonalCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
                 Position frontPosition = new Position(col--, row--);
@@ -122,6 +128,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void RightUpDiagonalCheck(Position currentPosition, Board board)
         {
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             while (true)
             {
                 Position frontPosition = new Position(col++, row--);

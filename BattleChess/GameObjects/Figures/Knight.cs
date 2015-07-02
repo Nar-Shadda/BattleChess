@@ -19,7 +19,8 @@ namespace BattleChess.GameObjects.Figures
 
         public override void CalcLegalPositions(Position currentPosition, Board board)
         {
-            
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
             List<Position> checkLegalPositions = new List<Position>()
             {
                 new Position(col++,(char)(row-2)),

@@ -20,8 +20,8 @@ namespace BattleChess.GameObjects.Figures
 
         public override void CalcLegalPositions(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             if (this.Color == Color.White)
             {

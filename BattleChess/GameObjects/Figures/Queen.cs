@@ -34,8 +34,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void RightDownDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
@@ -68,8 +68,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void LeftDownDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
@@ -102,8 +102,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void LeftUpDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
@@ -136,8 +136,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void RightUpDiagonalCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
@@ -170,8 +170,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void RightLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
@@ -204,8 +204,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void LeftLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
@@ -238,8 +238,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void BackLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
@@ -272,8 +272,8 @@ namespace BattleChess.GameObjects.Figures
 
         private void FrontLegalPositionsMovesCheck(Position currentPosition, Board board)
         {
-            char col = col;
-            char row = row;
+            char col = currentPosition.Col;
+            char row = currentPosition.Row;
 
             while (true)
             {
